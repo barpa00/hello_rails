@@ -19,7 +19,7 @@ class MissionsController < ApplicationController
     end
 
     def edit
-      @mission = Mission.find_by(id: params[:id])
+      find_mission    
     end
 
     def update
@@ -32,7 +32,7 @@ class MissionsController < ApplicationController
 
     def destroy
       @mission.destroy if @mission
-      redirect_to missions_path, notice: "已刪除"
+      redirect_to missions_path, notice: "已刪除", status: :see_other
     end
     
     private 

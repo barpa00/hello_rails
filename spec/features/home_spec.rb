@@ -65,9 +65,12 @@ feature "user vist homepage" do
       mission = create(:mission)
 
       visit root_path
-      find("a[href='#{mission_path(mission)}']").click 
-
-      # expect(page).to have_text "已刪除"
+      
+      accept_alert do
+        find("a[href='#{mission_path(mission)}']").click 
+      end
+     
+      expect(page).to have_text "已刪除"
     end
   end
     
