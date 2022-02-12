@@ -12,6 +12,8 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+require 'capybara/rspec'
+
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -91,4 +93,22 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.register_driver :chrome_headless do |app|
+    Capybara::Selenium::Driver.new app,
+      browser: :chrome,
+      clear_session_storage: true,
+      clear_local_storage: true,
+      capabilities: [Selenium::WebDriver::Chrome::Options.new(
+        args: %w[headless disable-gpu no-sandbox window-size=1024,768],
+      )]
+  end
+
+  driver = ENV['HEADED'] ? :chrome : :chrome_headless
+
+  Capybara.default_driver = driver
+  Capybara.javascript_driver = driver
 end
