@@ -1,5 +1,5 @@
 class MissionsController < ApplicationController
-    before_action :find_mission, only: [:update, :destroy]
+    before_action :find_mission, only: [:update, :destroy, :edit]
 
     def index
       @missions = Mission.all
@@ -19,7 +19,6 @@ class MissionsController < ApplicationController
     end
 
     def edit
-      find_mission    
     end
 
     def update
