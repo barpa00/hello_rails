@@ -2,10 +2,8 @@ name: Rails
 on: push
 
 jobs:
-  verify:
-    name: Build
+  build:
     runs-on: ubuntu-latest
-
     services:
       postgres:
         image: postgres:11
@@ -48,10 +46,4 @@ jobs:
           cp config/database.ci.yml config/database.yml
           bundle exec rails db:schema:load
           rspec
-      # - name: Run tests
-      #   env:
-      #     PGHOST: localhost
-      #     PGUSER: rails_github_actions
-      #     PGPORT: ${{ job.services.postgres.ports[5432] }}
-      #     RAILS_ENV: test
-      #   run: rspec
+    

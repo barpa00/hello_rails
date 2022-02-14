@@ -1,9 +1,9 @@
 <%= form_for(mission) do |f| %>
-  <%= f.label :title, "任務名稱" %>
+  <%= f.label :title, t("mission.title") %>
   <%= f.text_field :title %>
   <br>
-  <%= f.label :content, "任務內容" %>
+  <%= f.label :content, t("mission.title") %>
   <%= f.text_area :content %>
   <br>
-  <%= f.submit %>
+  <%= f.submit  t("button.submit")%>
 <% end %>

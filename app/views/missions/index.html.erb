@@ -1,12 +1,12 @@
-<h1>任務列表</h1>
+<h1><%= t("missions_list") %></h1>
 
 <%= notice %>
 <br>
-<%= link_to "新增任務", new_mission_path %>
+<%= link_to t("mission.new"), new_mission_path %>
 <br>
 <tr>
-  <td>任務名稱</td>
-  <td>任務內容</td>
+  <td><%= t("mission.title") %></td>
+  <td><%= t("mission.content") %></td>
 </tr>
 <br>
 <% @missions.each do |mission| %>
@@ -14,10 +14,10 @@
   <td><%= mission.title %></td>
   <td><%= mission.content %></td>
   <td>
-    <%= link_to "編輯", edit_mission_path(mission) %>
-    <%= link_to "刪除", mission_path(mission), data: {
+    <%= link_to t("mission.edit"), edit_mission_path(mission) %>
+    <%= link_to t("mission.delete"), mission_path(mission), data: {
                     turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
+                    turbo_confirm: t("notice.confirm")
                   } %>
   </td>
   <br>
