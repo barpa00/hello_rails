@@ -13,6 +13,7 @@
 <tr>
   <td><%= mission.title %></td>
   <td><%= mission.content %></td>
+  <td><%= mission.created_at %></td>
   <td>
     <%= link_to t("mission.edit"), edit_mission_path(mission) %>
     <%= link_to t("mission.delete"), mission_path(mission), data: {

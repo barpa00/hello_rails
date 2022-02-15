@@ -8,5 +8,6 @@ module HelloRails
   class Application < Rails::Application
     config.load_defaults 7.0
     config.i18n.default_locale = "zh-TW"
+    config.time_zone = "Taipei"
   end
 end
