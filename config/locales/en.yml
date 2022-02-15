@@ -1,4 +1,10 @@
 en:
+  activerecord:
+    attributes:
+      mission:
+        title: "Title"
+        content: "Content"
+
   Missions List: "Missions list"
   New Mission: "New Mission" 
   Edit Mission: "Edit Mission"

@@ -1,4 +1,10 @@
 zh-TW:
+  activerecord:
+    attributes:
+      mission:
+        title: "任務名稱"
+        content: "任務內容"
+
   missions_list: "任務列表"
   new_mission: "新增任務"
   edit_mission: "編輯任務"
@@ -11,7 +17,7 @@ zh-TW:
     content: "任務內容"
     created: "任務建立成功"
     updated: "任務更新成功"
-    deleted: "任務刪除成功"
+    deleted: "任務刪除成功" 
 
   link: 
     back_root: "返回"
