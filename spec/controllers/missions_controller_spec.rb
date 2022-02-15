@@ -7,8 +7,8 @@ RSpec.describe MissionsController do
       mission2 = create(:mission)
 
       get :index
-
-      expect(assigns[:missions]).to eq([mission1, mission2])
+      
+      expect(assigns[:missions]).to eq([mission2, mission1])
     end
 
     it "render template" do
