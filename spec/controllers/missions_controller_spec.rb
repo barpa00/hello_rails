@@ -40,7 +40,7 @@ RSpec.describe MissionsController do
   end
 
   describe "POST create" do
-    context "when course doesn't have a title" do
+    context "when mission doesn't have a title" do
       it "doesn't create a record" do
         expect do
           post :create, params: { mission: { content: "hello" }}
@@ -48,7 +48,7 @@ RSpec.describe MissionsController do
       end
     end
 
-    context "when course have a title" do
+    context "when mission have a title" do
       it "create a new mission record" do
         mission = build(:mission)
         
@@ -57,7 +57,7 @@ RSpec.describe MissionsController do
         end.to change { Mission.count }.by(1)
       end
 
-      it "redirects to courses_path" do
+      it "redirects to missions_path" do
         mission = build(:mission)
 
         post :create, params: { mission: attributes_for(:mission) }
