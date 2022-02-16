@@ -27,3 +27,6 @@ en:
   
   button: 
     submit: "confirm"
+
+  title: 
+    error: "cannot be empty."

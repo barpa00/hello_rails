@@ -27,3 +27,6 @@ zh-TW:
   
   button: 
     submit: "確定"
+
+  title: 
+    error: "不能為空白"

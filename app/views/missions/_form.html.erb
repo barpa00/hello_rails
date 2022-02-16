@@ -1,4 +1,12 @@
-<%= form_for(mission) do |f| %>
+<% if mission.errors.any? %>
+  <ul >
+    <% mission.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for mission, data: { turbo: false } do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br>
