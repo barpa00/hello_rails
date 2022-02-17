@@ -12,7 +12,7 @@
 </tr>
 <br>
 <% @missions.each do |mission| %>
-<tr>
+<div class="box">
   <td><%= mission.title %></td>
   <td><%= mission.content %></td>
   <td><%= mission.created_at.strftime("%Y/%m/%d %I:%M %p") %></td>
@@ -26,5 +26,5 @@
                   } %>
   </td>
   <br>
-</tr>
+</div>
 <% end %>
