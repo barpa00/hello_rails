@@ -4,10 +4,14 @@ en:
       mission:
         title: "Title"
         content: "Content"
+        status: "Order"
 
   Missions List: "Missions list"
   New Mission: "New Mission" 
   Edit Mission: "Edit Mission"
+  priority: "priority"
+  medium: "medium"
+  norush: "norush"
 
   mission: 
     new: "New Mission"
@@ -30,3 +34,5 @@ en:
 
   title: 
     error: "cannot be empty."
+  
+ 

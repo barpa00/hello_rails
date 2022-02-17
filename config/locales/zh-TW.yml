@@ -4,10 +4,14 @@ zh-TW:
       mission:
         title: "任務名稱"
         content: "任務內容"
+        status: "任務順序"
 
   missions_list: "任務列表"
   new_mission: "新增任務"
   edit_mission: "編輯任務"
+  priority: "優"
+  medium: "中"
+  norush: "低"
 
   mission: 
     new: "新增任務"
@@ -30,3 +34,5 @@ zh-TW:
 
   title: 
     error: "不能為空白"
+
+  

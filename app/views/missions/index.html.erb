@@ -7,13 +7,15 @@
 <tr>
   <td><%= t("mission.title") %></td>
   <td><%= t("mission.content") %></td>
+  <td><%= sort_link(@q, :status) %></td>
 </tr>
 <br>
 <% @missions.each do |mission| %>
 <tr>
   <td><%= mission.title %></td>
   <td><%= mission.content %></td>
-  <td><%= mission.created_at %></td>
+  <td><%= mission.created_at.strftime("%Y/%m/%d %I:%M %p") %></td>
+  <td><%= t("#{mission.status}") %></td>
   <td>
     <%= link_to t("mission.edit"), edit_mission_path(mission) %>
     <%= link_to t("mission.delete"), mission_path(mission), data: {
