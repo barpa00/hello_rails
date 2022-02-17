@@ -30,7 +30,7 @@ feature "user add a new mission" do
 
       fill_in "mission_title", with: "Mission Name"
       fill_in "mission_content", with: "Description"
-
+      
       click_button I18n.t("button.submit")
       
       expect(page).to have_text I18n.t("mission.created")
@@ -73,3 +73,7 @@ feature "user delete mission", js: true do
     end
 end
     
+
+
+
+

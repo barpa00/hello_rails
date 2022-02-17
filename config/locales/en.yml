@@ -5,6 +5,7 @@ en:
         title: "Title"
         content: "Content"
         status: "Order"
+        end_time: "End Time"
 
   Missions List: "Missions list"
   New Mission: "New Mission" 
@@ -35,4 +36,6 @@ en:
   title: 
     error: "cannot be empty."
   
- 
+  date:
+    order: ["day", "month", "year"]
+  
