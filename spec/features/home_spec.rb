@@ -73,14 +73,27 @@ feature "user delete mission", js: true do
     end
 end
     
-feature "click order button, missions list should order by end time" do
-  let!(:mission1) {create(:mission, end_time: "Sun, 17 Feb 2022")}
-  let!(:mission2) {create(:mission, end_time: "Sun, 28 Feb 2022")}
+feature "click End Time button, missions list should sorting by end time" do
+  let!(:mission1) { create(:mission, end_time: "Sun, 17 Feb 2022") }
+  let!(:mission2) { create(:mission, end_time: "Sun, 28 Feb 2022") }
 
   scenario "click button" do
     visit root_path
     
     find("a[href='/?q%5Bs%5D=status+asc']").click
     first(".box",  text: "2022/02/17")
+  end
+end
+
+feature "click Order button, missions list should sorting by status" do
+  let!(:mission1) { create(:mission, status: "priority" )}
+  let!(:mission2) { create(:mission, status: "norush" )}
+  let!(:mission3) { create(:mission, status: "medium" )}
+
+  scenario "click button" do
+    visit root_path
+    
+    find("a[href='/?q%5Bs%5D=status+asc']").click
+    first(".box",  text: I18n.t("norush"))
   end
 end

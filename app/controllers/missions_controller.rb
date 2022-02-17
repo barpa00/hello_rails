@@ -2,7 +2,6 @@ class MissionsController < ApplicationController
     before_action :find_mission, only: [:update, :destroy, :edit]
 
     def index
-      # @missions = Mission.all
       @q = Mission.ransack(params[:q])
       @missions = @q.result(distinct: true)
     
