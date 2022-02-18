@@ -1,24 +1,32 @@
-# README
+## 開發環境
+* Ruby 版本 3.0.3
+* Rails 版本 7.0.1
+* 資料庫: PostgreSQL
+* 網站部署: Heroku
+* 自動化測試: GitHub Action CI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Heroku 部署
+*  申請 Heroku 帳號
+*  安裝 Heroku Cli
+ 
+     https://devcenter.heroku.com/articles/heroku-cli
+* 登入 Heroku，輸入剛申請的帳號密碼。
+  ```
+  $ heroku login
+  ```
+* 創建一個新的 Heroku 應用
+  ```
+  $ heroku create
+  ```
+* 把專案推上 Heroku
+  ```
+  $ git push heroku master
+  ```
+* 用  Heroku 執行 rails db:migrate
+  ```
+  $ heroku run rails db:migrate
+  ```
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
