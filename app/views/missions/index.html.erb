@@ -15,9 +15,9 @@
 <div class="box">
   <td><%= mission.title %></td>
   <td><%= mission.content %></td>
-  <td><%= mission.created_at.strftime("%Y/%m/%d %I:%M %p") %></td>
+  <td><%= mission.created_at.try(:strftime,("%Y/%m/%d %I:%M %p")) %></td>
   <td><%= t("#{mission.status}") %></td>
-  <td><%= mission.end_time.strftime("%Y/%m/%d") %></td>
+  <td><%= mission.end_time.try(:strftime,("%Y/%m/%d")) %></td>
   <td>
     <%= link_to t("mission.edit"), edit_mission_path(mission) %>
     <%= link_to t("mission.delete"), mission_path(mission), data: {
