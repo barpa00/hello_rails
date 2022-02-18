@@ -2,7 +2,9 @@ class MissionsController < ApplicationController
     before_action :find_mission, only: [:update, :destroy, :edit]
 
     def index
-      @missions = Mission.all
+      @q = Mission.ransack(params[:q])
+      @missions = @q.result(distinct: true)
+    
     end
 
     def new
@@ -36,7 +38,7 @@ class MissionsController < ApplicationController
     
     private 
     def mission_params
-      params.require(:mission).permit(:title, :content)
+      params.require(:mission).permit(:title, :content, :status, :end_time)
     end
 
     def find_mission

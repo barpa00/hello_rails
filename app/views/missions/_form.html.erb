@@ -13,5 +13,13 @@
   <%= f.label :content %>
   <%= f.text_area :content %>
   <br>
+  <%= f.label :end_time %>
+  <%= f.date_select :end_time , use_month_numbers: true, default: 3.days.from_now%>
+  <br>
+  <%= f.label :status %>
+  <%= f.select :status, options_for_select([[ t("priority"), "priority" ],[ t("medium"), "medium" ],[ t("norush"), "norush" ]]) %>
+  <br>
   <%= f.submit  t("button.submit")%>
 <% end %>
+
+ 

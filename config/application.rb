@@ -11,3 +11,4 @@ module HelloRails
     config.time_zone = "Taipei"
   end
 end
+
