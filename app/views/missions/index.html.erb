@@ -4,11 +4,21 @@
 <br>
 <%= link_to t("mission.new"), new_mission_path %>
 <br>
+<%= search_form_for @q do |f| %>
+  <%= f.label :title %>
+  <%= f.search_field :title_cont_any %>
+  <br>
+  <%= f.label :aasm_state %>
+  <%= f.select :aasm_state_eq, options_for_select([[t("doing"), "doing"], [t("processing"), "processing"], [t("finishing"), "finishing"]])%>
+  <br>
+  <%= f.submit %>
+<% end %>
 <tr>
   <td><%= t("mission.title") %></td>
   <td><%= t("mission.content") %></td>
   <td><%= sort_link(@q, :status) %></td>
   <td><%= sort_link(@q, :end_time) %></td>
+  <td><%= t("mission.aasm_state") %></td> 
 </tr>
 <br>
 <% @missions.each do |mission| %>
@@ -17,6 +27,7 @@
   <td><%= mission.content %></td>
   <td><%= mission.created_at&.strftime("%Y/%m/%d %I:%M %p") %></td>
   <td><%= t("#{mission.status}") %></td>
+  <td><%= t("#{mission.aasm_state}") %></td>
   <td><%= mission.end_time&.strftime("%Y/%m/%d")%></td>
   <td>
     <%= link_to t("mission.edit"), edit_mission_path(mission) %>
@@ -24,6 +35,13 @@
                     turbo_method: :delete,
                     turbo_confirm: t("notice.confirm")
                   } %>
+    <% if mission.doing? %>
+      <%= link_to '開始處裡', missions_path(id: mission.id, event: 'todo') %>
+    <% elsif mission.processing? %>
+      <%= link_to '完成任務', missions_path(id: mission.id, event: 'done') %>
+    <% else %>
+      <%= link_to '尚未完成', missions_path(id: mission.id, event: 'undo') %>
+    <%end%>
   </td>
   <br>
 </div>
