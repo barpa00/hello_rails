@@ -44,3 +44,19 @@ zh-TW:
   date:
     order: ["day", "month", "year"]
   
+  views:
+    pagination:
+      first: "第一頁"
+      last: "最後一頁"
+      previous: "上一頁"
+      next: "下ㄧ頁"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "查無此紀錄"
+          one: "顯示 <b>1</b> %{entry_name}"
+          other: "顯示 <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "顯示 %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> 全部"

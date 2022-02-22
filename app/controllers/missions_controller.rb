@@ -3,7 +3,7 @@ class MissionsController < ApplicationController
 
     def index
       @q = Mission.ransack(params[:q])
-      @missions = @q.result(distinct: true)
+      @missions = @q.result(distinct: true).page(params[:page]).per(10)
       if params[:id]
         change_state
       end
