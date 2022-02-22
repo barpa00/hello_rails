@@ -4,7 +4,6 @@ class MissionsController < ApplicationController
     def index
       @q = Mission.ransack(params[:q])
       @missions = @q.result(distinct: true)
-
       if params[:id]
         change_state
       end
@@ -50,13 +49,14 @@ class MissionsController < ApplicationController
 
     def change_state
       find_mission
-      if params[:event] == 'todo'
+      if params[:event] == 'todo' && @mission.doing?
         @mission.todo! 
-      elsif params[:event] == 'done'
+      elsif params[:event] == 'done' && @mission.processing?
         @mission.done!
-      else
+      elsif params[:event] == 'undo' && @mission.finishing?
         @mission.undo!
+      else
+        redirect_to missions_path
       end
-      redirect_to missions_path
     end
 end
