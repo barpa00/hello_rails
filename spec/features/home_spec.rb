@@ -97,3 +97,17 @@ feature "click Order button, missions list should sorting by status" do
     first(".box",  text: I18n.t("norush"))
   end
 end
+
+feature "search missions works" do
+  let!(:mission1) { create(:mission, title: "mission1" )}
+  let!(:mission2) { create(:mission, title: "mission2" )}
+  scenario "click search button" do
+    visit root_path
+    fill_in "q_title_cont_any", with: "mission1"
+    
+    click_button('搜尋')
+
+    expect(page).to have_text("mission1")
+    expect(page).to have_no_text("mission2")
+  end
+end

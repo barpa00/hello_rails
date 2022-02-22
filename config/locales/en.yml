@@ -6,6 +6,7 @@ en:
         content: "Content"
         status: "Order"
         end_time: "End Time"
+        aasm_state: "State"
 
   Missions List: "Missions list"
   New Mission: "New Mission" 
@@ -13,6 +14,9 @@ en:
   priority: "priority"
   medium: "medium"
   norush: "norush"
+  doing: "todo"
+  processing: "processing"
+  finishing: "finish"
 
   mission: 
     new: "New Mission"
@@ -23,6 +27,7 @@ en:
     created: "Mission Created"
     updated: "Mission Updated"
     deleted: "Mission Deleted"
+    aasm_state: "Mission State"
   
   link:
     back_root: "Back"
