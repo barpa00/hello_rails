@@ -2,8 +2,8 @@ class MissionsController < ApplicationController
     before_action :find_mission, only: [:update, :destroy, :edit]
 
     def index
-      @q = Mission.ransack(params[:q])
-      @missions = @q.result(distinct: true).page(params[:page]).per(10)
+      @q = Mission.where(user_id: session[:hellorails]).ransack(params[:q])
+      @missions = @q.result(distinct: true).page(params[:page]).per(10)      
       if params[:id]
         change_state
       end
@@ -14,7 +14,7 @@ class MissionsController < ApplicationController
     end
 
     def create
-      @mission = Mission.new(mission_params)
+      @mission = current_user.missions.create(mission_params)
       if @mission.save
         redirect_to missions_path, notice: I18n.t("mission.created")
       else

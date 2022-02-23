@@ -7,6 +7,10 @@ en:
         status: "Order"
         end_time: "End Time"
         aasm_state: "State"
+      user: 
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
 
   Missions List: "Missions list"
   New Mission: "New Mission" 
@@ -29,7 +33,13 @@ en:
     deleted: "Mission Deleted"
     aasm_state: "Mission State"
     created_at: "Create at"
-  
+
+  user:
+    log_in: "success"
+    log_out: "log out"
+    sign_in: "success"
+    error: "Wrong email or password"
+
   link:
     back_root: "Back"
   
