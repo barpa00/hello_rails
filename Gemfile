@@ -15,6 +15,7 @@ gem "bootsnap", require: false
 gem 'i18n'
 gem 'ransack'
 gem 'aasm'
+gem 'kaminari'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

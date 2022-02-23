@@ -28,6 +28,8 @@ zh-TW:
     updated: "任務更新成功"
     deleted: "任務刪除成功" 
     aasm_state: "任務狀態"
+    created_at: "建立時間"
+
 
   link: 
     back_root: "返回"
@@ -44,3 +46,19 @@ zh-TW:
   date:
     order: ["day", "month", "year"]
   
+  views:
+    pagination:
+      first: "第一頁"
+      last: "最後一頁"
+      previous: "上一頁"
+      next: "下ㄧ頁"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "查無此紀錄"
+          one: "顯示 <b>1</b> %{entry_name}"
+          other: "顯示 <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "顯示 %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> 全部"
