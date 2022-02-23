@@ -7,19 +7,24 @@
 <% end %>
 
 <%= form_for mission, data: { turbo: false } do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <br>
-  <%= f.label :end_time %>
-  <%= f.date_select :end_time , use_month_numbers: true, default: 3.days.from_now%>
-  <br>
-  <%= f.label :status %>
-  <%= f.select :status, options_for_select([[ t("priority"), "priority" ],[ t("medium"), "medium" ],[ t("norush"), "norush" ]]) %>
-  <br>
-  <%= f.submit  t("button.submit")%>
+  <div class="px-8 py-12">
+    <%= f.label :title %>
+    <%= f.text_field :title ,class: "w-full border-solid border rounded-md h-10 my-2" %>
+    <%= f.label :content %>
+    <%= f.text_area :content ,class: "w-full border-solid border rounded-md h-20 my-2" %>
+    <%= f.label :end_time %>
+    <div class="border-solid border w-max rounded-md py-0.5 inline-block mr-3"> 
+      <%= f.date_select :end_time , use_month_numbers: true, default: 3.days.from_now %>
+    </div>
+    <%= f.label :status %>
+    <div class="border-solid border w-max rounded-md py-0.5 inline-block">
+      <%= f.select :status, options_for_select([[ t("priority"), "priority" ],[ t("medium"), "medium" ],[ t("norush"), "norush" ]]) %>
+    </div>
+    <div class="space-x-4">
+      <button class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4"><%= f.submit  t("button.submit")%></button>
+      <button class="px-4 py-2 bg-red-600 text-white rounded-md mt-4"><%= link_to t("link.back_root"), root_path %></button>
+    </div>
+  </div>
 <% end %>
 
- 
+  

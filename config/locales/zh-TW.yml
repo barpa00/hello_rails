@@ -28,6 +28,8 @@ zh-TW:
     updated: "任務更新成功"
     deleted: "任務刪除成功" 
     aasm_state: "任務狀態"
+    created_at: "建立時間"
+
 
   link: 
     back_root: "返回"

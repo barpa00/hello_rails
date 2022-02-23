@@ -28,6 +28,7 @@ en:
     updated: "Mission Updated"
     deleted: "Mission Deleted"
     aasm_state: "Mission State"
+    created_at: "Create at"
   
   link:
     back_root: "Back"
@@ -43,7 +44,7 @@ en:
   
   date:
     order: ["day", "month", "year"]
-    
+
   views:
     pagination:
       first: "&laquo; First"

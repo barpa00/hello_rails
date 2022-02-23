@@ -1,50 +1,70 @@
-<h1><%= t("missions_list") %></h1>
-
-<%= notice %>
-<br>
-<%= link_to t("mission.new"), new_mission_path %>
-<br>
-<%= search_form_for @q do |f| %>
-  <%= f.label :title %>
-  <%= f.search_field :title_cont_any %>
-  <br>
-  <%= f.label :aasm_state %>
-  <%= f.select :aasm_state_eq, options_for_select([["請選擇",""],[t("doing"), "doing"], [t("processing"), "processing"], [t("finishing"), "finishing"]])%>
-  <br>
-  <%= f.submit %>
+<h1 class="font-bold px-4 pt-2"><%= t("missions_list") %></h1>
+<% if notice%>
+  <div class="w-full bg-yellow-100 px-8 py-4 rounded-md text-gray-500">
+    <%= notice %>
+  </div>
 <% end %>
-<tr>
-  <td><%= t("mission.title") %></td>
-  <td><%= t("mission.content") %></td>
-  <td><%= sort_link(@q, :status) %></td>
-  <td><%= sort_link(@q, :end_time) %></td>
-  <td><%= t("mission.aasm_state") %></td> 
-</tr>
-<br>
+<%= search_form_for @q do |f| %>
+  <div class="px-4 py-4 flex gap-5 items-center">
+    <%= f.label :title %> 
+    <%= f.search_field :title_cont_any, class:"border-solid border rounded-md mx-2 h-10" %>
+    <%= f.label :aasm_state %>
+    <div class="border-solid border rounded-md px-1 self-center"> 
+      <%= f.select :aasm_state_eq, options_for_select([["請選擇",""],[t("doing"), "doing"], [t("processing"), "processing"], [t("finishing"), "finishing"]]) %>
+    </div>
+    <button class="bg-gray-500 px-4 py-2 rounded-md text-white hover:bg-gray-600"><%= f.submit %></button>
+  </div>
+<% end %>
+
+<button class="px-4 py-2 rounded-md text-white bg-blue-500 block mx-4">
+  <%= link_to t("mission.new"), new_mission_path %>
+</button>
+
+<div class="pl-12 py-3 border-y mt-4">
+  <div class="w-4/5 flex">
+    <div class="w-2/12"><%= t("mission.title") %></div>
+    <div class="w-1/5"><%= t("mission.content") %></div>
+    <div class="w-1/5"><%= t("mission.created_at") %></div>
+    <div class="text-blue-500 hover:text-blue-800 w-2/12"><%= sort_link(@q, :status) %></div>
+    <div class="w-2/12"><%= t("mission.aasm_state") %></div> 
+    <div class="text-blue-500 hover:text-blue-800 min-w-max"><%= sort_link(@q, :end_time) %></div>
+  </div>
+</div>
+
 <% @missions.each do |mission| %>
-<div class="box">
-  <td><%= mission.title %></td>
-  <td><%= mission.content %></td>
-  <td><%= mission.created_at&.strftime("%Y/%m/%d %I:%M %p") %></td>
-  <td><%= t("#{mission.status}") %></td>
-  <td><%= t("#{mission.aasm_state}") %></td>
-  <td><%= mission.end_time&.strftime("%Y/%m/%d")%></td>
-  <td>
-    <%= link_to t("mission.edit"), edit_mission_path(mission) %>
-    <%= link_to t("mission.delete"), mission_path(mission), data: {
+<div class="box flex px-12 py-3 justify-between border-b odd:bg-gray-100 items-center">
+  <div class="text-left flex-1"><%= mission.title %></div>
+  <div class="text-center flex-1"><%= mission.content %></div>
+  <div class="text-center flex-1"><%= mission.created_at&.strftime("%Y/%m/%d %I:%M %p") %></div>
+  <div class="text-center flex-1"><%= t("#{mission.status}") %></div>
+  <div class="text-center flex-1"><%= t("#{mission.aasm_state}") %>
+  <button class="ml-2 text-white ">
+    <% if mission.doing? %>
+      <%= link_to '開始處理', missions_path(id: mission.id, event: 'todo'), class: "bg-red-500 px-4 py-2 rounded-md" %>
+    <% elsif mission.processing? %>
+      <%= link_to '完成任務', missions_path(id: mission.id, event: 'done'), class: "bg-blue-900 px-4 py-2 rounded-md" %>
+    <% else %>
+      <%= link_to '尚未完成', missions_path(id: mission.id, event: 'undo'), class: "bg-slate-300 px-4 py-2 rounded-md" %>
+    <%end%>
+  </button>
+  </div>
+  <div class="text-center flex-1"><%= mission.end_time&.strftime("%Y/%m/%d")%></div>
+  <div class="text-center flex-1">
+    <button class="px-4 py-2 bg-blue-500 text-white rounded-md">
+      <%= link_to t("mission.edit"), edit_mission_path(mission) %>
+    </button>
+    <button class="px-4 py-2 bg-blue-500 text-white rounded-md">
+      <%= link_to t("mission.delete"), mission_path(mission), data: {
                     turbo_method: :delete,
                     turbo_confirm: t("notice.confirm")
                   } %>
-    <% if mission.doing? %>
-      <%= link_to '開始處裡', missions_path(id: mission.id, event: 'todo') %>
-    <% elsif mission.processing? %>
-      <%= link_to '完成任務', missions_path(id: mission.id, event: 'done') %>
-    <% else %>
-      <%= link_to '尚未完成', missions_path(id: mission.id, event: 'undo') %>
-    <%end%>
-  </td>
+    </button>
+  </div>
   <br>
 </div>
 <% end %>
-<%= paginate @missions %>
+
+<div class="px-8 py-8 text-blue-500">
+  <%= paginate @missions %>
+</div>
 
