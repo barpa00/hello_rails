@@ -24,6 +24,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "shoulda-matchers"
   gem "byebug", "~> 11.1"
+  gem 'faker'
 end
 
 group :development do
@@ -34,4 +35,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'database_cleaner-active_record'
 end

@@ -1,7 +1,7 @@
 module SessionsHelper
   def current_user
     if session[:hellorails].present?
-      @user ||= User.find_by(id: session[:hellorails])
+      @current_user ||= User.find(session[:hellorails])
     else
       nil
     end

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :missions, autosave: true
-
+  validates :email, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true
+
   before_create :encrypt_password
 
   has_many :missions, autosave: true, dependent: :destroy
@@ -12,6 +12,7 @@ class User < ApplicationRecord
   end
 
   private
+
   def encrypt_password
     self.password = User.encrypt_pw("#{self.password}")
   end

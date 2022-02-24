@@ -4,8 +4,9 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
+    user = User.new(user_params)
+    if user.save
+      session[:hellorails] = user.id
       redirect_to root_path, notice: I18n.t("user.sign_in")
     else
       render :new

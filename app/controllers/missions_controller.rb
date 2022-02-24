@@ -2,7 +2,7 @@ class MissionsController < ApplicationController
     before_action :find_mission, only: [:update, :destroy, :edit]
 
     def index
-      @q = Mission.where(user_id: session[:hellorails]).ransack(params[:q])
+      @q = Mission.where(user_id: current_user&.id).ransack(params[:q])
       @missions = @q.result(distinct: true).page(params[:page]).per(10)      
       if params[:id]
         change_state
@@ -40,7 +40,7 @@ class MissionsController < ApplicationController
     
     private 
     def mission_params
-      params.require(:mission).permit(:title, :content, :status, :end_time, :aasm_state)
+      params.require(:mission).permit(:title, :content, :status, :end_time, :aasm_state, :user_id)
     end
 
     def find_mission
