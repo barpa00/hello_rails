@@ -5,7 +5,6 @@ class User < ApplicationRecord
   before_create :encrypt_password
 
   has_many :missions, autosave: true, dependent: :destroy
-
   def self.login(user)
     pw = encrypt_pw(user[:password])
     User.find_by(email: user[:email], password: pw)

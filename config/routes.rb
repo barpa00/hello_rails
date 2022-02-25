@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     post '/log_in', action: 'create'
     delete '/log_out', action: 'destroy'
   end
-  
+
+  namespace  :admin do
+    resources :users
+  end
+
 end
