@@ -6,15 +6,14 @@ class SessionsController < ApplicationController
   def create
     user = User.login(params[:user])
     if user
-      session[:hellorails] = user.id
-      redirect_to root_path, notice: I18n.t("user.log_in")
+      after_sign_in_action(user, I18n.t("user.log_in"))
     else
-      redirect_to "/users/log_in", notice: I18n.t("user.error")
+      redirect_to log_in_path, notice: I18n.t("user.error")
     end
   end
 
   def destroy
     session[:hellorails] = nil
-    redirect_to root_path, notice: I18n.t("user.log_out")
+    redirect_to log_in_path, notice: I18n.t("user.log_out")
   end
 end

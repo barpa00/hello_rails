@@ -6,7 +6,7 @@ RSpec.describe 'Home', type: :feature do
   let!(:user) { create(:user, password: origin_password) }
 
   before do
-    visit log_in_users_path
+    visit log_in_path
     byebug
 
     fill_in "user_email", with: user.email
