@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :basic, if: :production?
   helper_method :current_user
   
-  private:
+  private
   def production?
     Rails.env.production?
   end

@@ -13,6 +13,11 @@
   <body>
     <div>
       <%= render "common/navbar" %>
+      <% if notice%>
+        <div class="w-full bg-yellow-100 px-8 py-4 rounded-md text-gray-500">
+          <%= notice %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

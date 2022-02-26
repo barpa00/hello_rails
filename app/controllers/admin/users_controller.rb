@@ -2,7 +2,11 @@ class  Admin::UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update, :destroy, :show]
 
   def index
-    @users = User.includes(:missions)
+    if current_user.admin? 
+      @users = User.includes(:missions)
+    else
+      redirect_to root_path, notice: "權限不足訊息無法存取"
+    end
   end
   
   def new
@@ -32,16 +36,16 @@ class  Admin::UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to admin_users_path
+      redirect_to admin_users_path, notice: 'success'
     else
-      redirect_to admin_users_path
+      redirect_to admin_users_path, notice: 'not working'
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :roles)
   end
 
   def find_user
