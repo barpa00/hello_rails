@@ -7,13 +7,11 @@ RSpec.describe 'Home', type: :feature do
 
   before do
     visit log_in_path
-    byebug
 
     fill_in "user_email", with: user.email
     fill_in "user_password", with: origin_password
-    # byebug
+    
     execute_script(%Q{document.querySelector("input[type='submit']").click()})
-    # click_on I18n.t("button.submit")
   end
 
   describe "user vist homepage" do
