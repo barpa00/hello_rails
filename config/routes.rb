@@ -2,17 +2,14 @@ Rails.application.routes.draw do
   root "missions#index"
   resources :missions
 
-  resource :users, controller: 'registrations', only: [:new, :create] do
-  end
+  get '/sign_up', to: 'registrations#new'
+  post '/sign_up', to: 'registrations#create'
 
-  resource :users, controller: 'sessions', only: [] do
-    get '/log_in', action: 'new'
-    post '/log_in', action: 'create'
-    delete '/log_out', action: 'destroy'
-  end
+  get '/log_in', to: 'sessions#new'
+  post '/log_in', to: 'sessions#create'
+  delete '/log_out', to: 'sessions#destroy'
 
-  namespace  :admin do
+  namespace :admin do
     resources :users
   end
-
 end

@@ -1,0 +1,6 @@
+<%= @user.email %> 任務列表 
+<br>
+<% @user.missions.each do |u| %>
+  <%= u.title %>
+  <%= u.content %>
+<% end %>

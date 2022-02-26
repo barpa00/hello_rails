@@ -1,0 +1,7 @@
+<%= form_for @user, url: admin_user_path(@user), method: 'put' do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit t("button.submit") %>
+<% end %>

@@ -1,10 +1,19 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
   before_action :basic, if: :production?
-
+  helper_method :current_user
+  
   private
-  def production?   
+  def production?
     Rails.env.production?
+  end
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:hellorails])
+  end
+
+  def after_sign_in_action(user, message)
+    session[:hellorails] = user.id
+    redirect_to root_path, notice: message
   end
 
   def basic

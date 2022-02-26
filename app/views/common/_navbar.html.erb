@@ -3,9 +3,9 @@
   
   <% if current_user %>
     <%= current_user.email %>
-    <%= link_to "登出", log_out_users_path, data: { turbo_method: :delete } %>
+    <%= link_to "登出", log_out_path, data: { turbo_method: :delete } %>
   <% else %>
-    <%= link_to "登入", log_in_users_path %>
-    <%= link_to "註冊", new_users_path %>
+    <%= link_to "登入", log_in_path %>
+    <%= link_to "註冊", sign_up_path %>
   <% end %>
 </nav>
