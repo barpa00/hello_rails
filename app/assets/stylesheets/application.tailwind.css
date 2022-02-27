@@ -11,3 +11,21 @@
 }
 
 */
+
+@layer base {
+  select {
+    @apply border-none  focus:ring-0
+  }
+  input[type='text'],
+  input[type='search'],
+  input[type='password'],
+  textarea {
+    @apply rounded-md border-gray-200 focus:ring-0
+  }
+  h1 {
+    @apply text-2xl
+  }
+  button {
+    @apply px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-opacity-75
+  }
+}

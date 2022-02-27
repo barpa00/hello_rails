@@ -1,6 +1,13 @@
-<%= @user.email %> 任務列表 
-<br>
+<h1 class="pl-8 py-4"><span class="text-blue-500 pr-1"><%= @user.email %></span><%= t("missions_list") %></h1>
+
+<div class="flex w-1/4 gap-2 px-8 text-lg">
+  <div class="flex justify-center items-center"><%= t("mission.title")%></div>
+  <div class="flex justify-center items-center"><%= t("mission.content")%></div>
+</div>
+
 <% @user.missions.each do |u| %>
-  <%= u.title %>
-  <%= u.content %>
+  <div class="flex w-1/4 gap-2 px-8">
+    <div class="flex justify-center items-center text-blue-400"><%= u.title %></div>
+    <div class="flex justify-center items-center"><%= u.content %></div>
+  </div>
 <% end %>
