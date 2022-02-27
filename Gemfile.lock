@@ -242,6 +242,10 @@ GEM
     stimulus-rails (1.0.2)
       railties (>= 6.0.0)
     strscan (3.0.1)
+    tailwindcss-rails (2.0.7-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.7-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
     turbo-rails (1.0.1)
@@ -292,6 +296,7 @@ DEPENDENCIES
   shoulda-matchers
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console
@@ -301,4 +306,4 @@ RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.32
+   2.3.6
