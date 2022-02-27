@@ -5,7 +5,7 @@ class  Admin::UsersController < ApplicationController
     if current_user.admin? 
       @users = User.includes(:missions)
     else
-      redirect_to root_path, notice: "權限不足訊息無法存取"
+      redirect_to root_path, notice: I18n.t("roles.error")
     end
   end
   
@@ -36,9 +36,9 @@ class  Admin::UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      redirect_to admin_users_path, notice: 'success'
+      redirect_to admin_users_path, notice: I18n.t("user.delete_success")
     else
-      redirect_to admin_users_path, notice: 'not working'
+      redirect_to admin_users_path, notice: I18n.t("user.admin_delete_error")
     end
   end
 

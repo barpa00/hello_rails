@@ -1,4 +1,4 @@
-<button class="mx-8 my-4"><%= link_to "新增使用者" , new_admin_user_path %></button>
+<button class="mx-8 my-4"><%= link_to t("add_user") , new_admin_user_path %></button>
 <% if @user&.errors&.any? %>
   <% @user.errors.full_messages.each do |error| %>
     <%= error %>
@@ -6,10 +6,10 @@
 <% end %>
 
 <div class="grid grid-cols-4 divide-x-2 border-y-2 mx-8 h-12">
-  <div class="flex items-center justify-center text-lg font-bold">使用者信箱</div>
-  <div class="flex items-center justify-center text-lg font-bold">任務總數</div>
-  <div class="flex items-center justify-center text-lg font-bold">角色</div>
-  <div class="flex items-center justify-center text-lg font-bold">操作</div>
+  <div class="flex items-center justify-center text-lg font-bold"><%= t("user.email") %></div>
+  <div class="flex items-center justify-center text-lg font-bold"><%= t("user.mission_count") %></div>
+  <div class="flex items-center justify-center text-lg font-bold"><%= t("user.roles") %></div>
+  <div class="flex items-center justify-center text-lg font-bold"></div>
 </div>
 
 <% @users.each do |user| %>
@@ -18,8 +18,8 @@
     <li class="flex items-center justify-center"><%= user.missions.size %></li>
     <li class="flex items-center justify-center"><%= user.roles %>
     <li class="flex gap-2 items-center justify-center">
-      <button class="px-4 py-2 bg-blue-500 text-white rounded-md my-2"><%= link_to "編輯", edit_admin_user_path(user) %></button>
-      <button class="px-4 py-2 bg-red-600 text-white rounded-md my-2"><%= link_to "刪除", admin_user_path(user), data: { turbo_method: :delete } %></button>
+      <button class="px-4 py-2 bg-blue-500 text-white rounded-md my-2"><%= link_to t("user.edit"), edit_admin_user_path(user) %></button>
+      <button class="px-4 py-2 bg-red-600 text-white rounded-md my-2"><%= link_to t("user.delete"), admin_user_path(user), data: { turbo_method: :delete } %></button>
     </li>
   </ul>
 <% end %>

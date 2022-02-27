@@ -7,7 +7,7 @@
       <%= f.search_field :title_cont_any, class:"mx-2 h-10" %>
       <%= f.label :aasm_state %>
       <div class="border-solid border rounded-md px-1 self-center"> 
-        <%= f.select :aasm_state_eq, options_for_select([["請選擇",""],[t("doing"), "doing"], [t("processing"), "processing"], [t("finishing"), "finishing"]]) %>
+        <%= f.select :aasm_state_eq, options_for_select([[t("chose"),""],[t("doing"), "doing"], [t("processing"), "processing"], [t("finishing"), "finishing"]]) %>
       </div>
       <button class="bg-gray-500 hover:bg-gray-600"><%= f.submit %></button>
     </div>
@@ -32,9 +32,9 @@
      <%# 任務結束時間  1%>
       <div class="text-blue-500 hover:text-blue-800 spec_endTime_button"><%= sort_link(@q, :end_time) %></div>
      <%# 任務標籤  2%>
-      <div class=""><%= "標籤" %></div>
+      <div class=""><%= t("mission.tags") %></div>
      <%# 操作  2%>
-      <div class="">操作</div>
+      <div class=""></div>
     </div>
   </div>
 
@@ -46,11 +46,11 @@
     <div class="flex items-center justify-center"><%= t("#{mission.status}") %></div>
     <div class="flex items-center justify-center gap-2"><%= t("#{mission.aasm_state}") %>
       <% if mission.doing? %>
-        <button class="bg-orange-400"><%= link_to '開始處理', missions_path(id: mission.id, event: 'todo') %></button>
+        <button class="bg-orange-400"><%= link_to t("mission.todo"), missions_path(id: mission.id, event: 'todo') %></button>
       <% elsif mission.processing? %>
-        <button class="bg-blue-900"><%= link_to '完成任務', missions_path(id: mission.id, event: 'done') %></button>
+        <button class="bg-blue-900"><%= link_to t("mission.done"), missions_path(id: mission.id, event: 'done') %></button>
       <% else %>
-        <button class="bg-slate-300"><%= link_to '尚未完成', missions_path(id: mission.id, event: 'undo') %></button>
+        <button class="bg-slate-300"><%= link_to t("mission.undo"), missions_path(id: mission.id, event: 'undo') %></button>
       <%end%>
     </div>
     <div class="flex items-center justify-center spec-end-time"><%= mission.end_time&.strftime("%Y/%m/%d")%></div>
