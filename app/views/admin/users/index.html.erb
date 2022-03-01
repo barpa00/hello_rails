@@ -1,0 +1,9 @@
+<%= link_to "新增使用者" , new_admin_user_path %>
+<% @users.each do |user| %>
+<ul>
+  <li><%= link_to user.email, admin_user_path(user) %></li>
+  <li><%= link_to "編輯", edit_admin_user_path(user) %></li>
+  <li><%= link_to "刪除", admin_user_path(user), data: { turbo_method: :delete } %></li>
+  <li><%= user.missions.size %></li>
+</ul>
+<% end %>

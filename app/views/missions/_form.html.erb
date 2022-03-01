@@ -21,7 +21,7 @@
       <%= f.select :status, options_for_select([[ t("priority"), "priority" ],[ t("medium"), "medium" ],[ t("norush"), "norush" ]]) %>
     </div>
     <div class="space-x-4">
-      <button class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4"><%= f.submit  t("button.submit")%></button>
+      <button class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4"><%= f.submit t("button.submit") %></button>
       <button class="px-4 py-2 bg-red-600 text-white rounded-md mt-4"><%= link_to t("link.back_root"), root_path %></button>
     </div>
   </div>

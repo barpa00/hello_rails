@@ -13,9 +13,9 @@
 # it.
 #
 require 'capybara/rspec'
-
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.include Capybara::DSL
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -108,7 +108,8 @@ RSpec.configure do |config|
   end
 
   driver = ENV['HEADED'] ? :chrome : :chrome_headless
-
+  
   Capybara.default_driver = driver
   Capybara.javascript_driver = driver
+  
 end

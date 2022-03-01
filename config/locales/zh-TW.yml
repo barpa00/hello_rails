@@ -7,6 +7,10 @@ zh-TW:
         status: "任務順序"
         end_time: "任務結束時間"
         aasm_state: "狀態"
+      user: 
+        email: "信箱"
+        password: "密碼"
+        password_confirmation: "密碼確認"
 
   missions_list: "任務列表"
   new_mission: "新增任務"
@@ -30,6 +34,11 @@ zh-TW:
     aasm_state: "任務狀態"
     created_at: "建立時間"
 
+  user:
+    log_in: "已登入:)"
+    log_out: "已登出"
+    sign_in: "註冊成功"
+    error: "帳號密碼錯誤"
 
   link: 
     back_root: "返回"

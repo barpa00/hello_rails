@@ -1,4 +1,5 @@
 class Mission < ApplicationRecord
+  belongs_to :user
   paginates_per 10
   
   validates :title, presence: { message: I18n.t('title.error') }
