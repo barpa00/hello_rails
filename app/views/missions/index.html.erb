@@ -1,12 +1,6 @@
 <% if current_user %>
   <h1 class="font-bold px-4 pt-2"><%= t("missions_list") %></h1>
 
-  <% if notice%>
-    <div class="w-full bg-yellow-100 px-8 py-4 rounded-md text-gray-500">
-      <%= notice %>
-    </div>
-  <% end %>
-
   <%= search_form_for @q do |f| %>
     <div class="px-4 py-4 flex gap-5 items-center">
       <%= f.label :title %> 
@@ -24,23 +18,33 @@
   </button>
 
   <div class="pl-12 py-3 border-y mt-4">
-    <div class="w-4/5 flex">
-      <div class="w-2/12"><%= t("mission.title") %></div>
-      <div class="w-1/5"><%= t("mission.content") %></div>
-      <div class="w-1/5"><%= t("mission.created_at") %></div>
-      <div class="text-blue-500 hover:text-blue-800 w-2/12"><%= sort_link(@q, :status) %></div>
-      <div class="w-2/12"><%= t("mission.aasm_state") %></div> 
-      <div class="text-blue-500 hover:text-blue-800 min-w-max spec_endTime_button"><%= sort_link(@q, :end_time) %></div>
+    <div class="w-all flex text-center">
+     <%# 任務名稱  1%>
+      <div class="w-1/12"><%= t("mission.title") %></div>
+     <%# 任務內容  1%>
+      <div class="w-1/12"><%= t("mission.content") %></div>
+     <%# 任務創建時間  2%>
+      <div class="w-2/12"><%= t("mission.created_at") %></div>
+     <%# 任務順序  1%>
+      <div class="text-blue-500 hover:text-blue-800 w-1/12"><%= sort_link(@q, :status) %></div>
+     <%# 任務狀態  1%>
+      <div class="w-1/12"><%= t("mission.aasm_state") %></div> 
+     <%# 任務結束時間  1%>
+      <div class="text-blue-500 hover:text-blue-800 min-w-max spec_endTime_button w-1/12"><%= sort_link(@q, :end_time) %></div>
+     <%# 任務標籤  2%>
+      <div class="w-2/12"><%= "標籤" %></div>
+     <%# 操作  2%>
+      <div class="w-2/12">操作</div>
     </div>
   </div>
 
   <% @missions.each do |mission| %>
-    <div class="box flex px-12 py-3 justify-between border-b odd:bg-gray-100 items-center">
-    <div class="text-left flex-1"><%= mission.title %></div>
-    <div class="text-center flex-1"><%= mission.content %></div>
-    <div class="text-center flex-1"><%= mission.created_at&.strftime("%Y/%m/%d %I:%M %p") %></div>
-    <div class="text-center flex-1"><%= t("#{mission.status}") %></div>
-    <div class="text-center flex-1"><%= t("#{mission.aasm_state}") %>
+    <div class="box flex px-12 py-3 justify-between border-b odd:bg-gray-100 items-center text-center">
+    <div class="text-left w-1/12"><%= mission.title %></div>
+    <div class="text-center w-1/12"><%= mission.content %></div>
+    <div class="text-center w-2/12"><%= mission.created_at&.strftime("%Y/%m/%d %I:%M %p") %></div>
+    <div class="text-center w-1/12"><%= t("#{mission.status}") %></div>
+    <div class="text-center w-1/12"><%= t("#{mission.aasm_state}") %>
     <button class="ml-2 text-white ">
       <% if mission.doing? %>
         <%= link_to '開始處理', missions_path(id: mission.id, event: 'todo'), class: "bg-red-500 px-4 py-2 rounded-md" %>
@@ -51,8 +55,9 @@
       <%end%>
     </button>
     </div>
-    <div class="text-center flex-1 spec-end-time"><%= mission.end_time&.strftime("%Y/%m/%d")%></div>
-    <div class="text-center flex-1">
+    <div class="text-center w-1/12 spec-end-time"><%= mission.end_time&.strftime("%Y/%m/%d")%></div>
+    <div class="text-center w-2/12"><%= mission.all_tags %></div>
+    <div class="text-center w-1/12 flex">
       <button class="px-4 py-2 bg-blue-500 text-white rounded-md spec_edit_button">
         <%= link_to t("mission.edit"), edit_mission_path(mission) %>
       </button>

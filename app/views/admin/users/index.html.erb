@@ -1,9 +1,17 @@
 <%= link_to "新增使用者" , new_admin_user_path %>
+
+<% if @user&.errors&.any? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
 <% @users.each do |user| %>
-<ul>
-  <li><%= link_to user.email, admin_user_path(user) %></li>
-  <li><%= link_to "編輯", edit_admin_user_path(user) %></li>
-  <li><%= link_to "刪除", admin_user_path(user), data: { turbo_method: :delete } %></li>
-  <li><%= user.missions.size %></li>
-</ul>
+  <ul>
+    <li><%= link_to user.email, admin_user_path(user) %></li>
+    <li><%= link_to "編輯", edit_admin_user_path(user) %></li>
+    <li><%= link_to "刪除", admin_user_path(user), data: { turbo_method: :delete } %></li>
+    <li><%= user.missions.size %></li>
+    <li><%= user.roles %>
+  </ul>
 <% end %>
