@@ -53,7 +53,7 @@ class MissionsController < ApplicationController
 
     def current_user_not_found
       if current_user.nil?
-        redirect_to log_in_path, notice: "請先登入"
+        redirect_to log_in_path, notice: I18n.t("login_first")
       end
     end 
 

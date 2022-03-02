@@ -12,15 +12,26 @@ en:
         password: "Password"
         password_confirmation: "Password Confirmation"
 
-  Missions List: "Missions list"
-  New Mission: "New Mission" 
-  Edit Mission: "Edit Mission"
+  mission_system: "Mission System"
+  missions_list: "Missions list"
+  new_mission: "New Mission" 
+  edit_mission: "Edit Mission"
   priority: "priority"
   medium: "medium"
   norush: "norush"
+  chose: "chose"
   doing: "todo"
   processing: "processing"
   finishing: "finish"
+  user_login: "User Login"
+  user_sign_up: "User Sign Up"
+  add_user: "Add User"
+  edit_user: "Edit User"
+  login_first: "please login first"
+  login: "Login"
+  admin_page: "Admin Page"
+  logout: "Logout"
+  sign_up: "Sign Up"
 
   mission: 
     new: "New Mission"
@@ -33,12 +44,23 @@ en:
     deleted: "Mission Deleted"
     aasm_state: "Mission State"
     created_at: "Create at"
+    tags: "Tags"
+    todo: "ToDo"
+    done: "Done"
+    undo: "Undo"
 
   user:
     log_in: "success"
     log_out: "log out"
     sign_in: "success"
     error: "Wrong email or password"
+    email: "Email"
+    mission_count: "Mission Count"
+    roles: "Role"
+    edit: "Edit"
+    delete: "Delete"
+    delete_success: "Success"
+    admin_delete_error: "Admin's count cannot be less than zero"
 
   link:
     back_root: "Back"
@@ -54,6 +76,9 @@ en:
   
   date:
     order: ["day", "month", "year"]
+
+  roles: 
+    error: "permission denied"
 
   views:
     pagination:

@@ -1,7 +1,17 @@
+<h1 class="py-4 px-8"><%= t("edit_user") %></h1>
+
 <%= form_for @user, url: admin_user_path(@user), method: 'put' do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :roles %>
-  <%= f.select :roles, options_for_select([[ "user", "user"], ["admin", "admin"]]) %>
-  <%= f.submit t("button.submit") %>
+<div class="flex flex-col gap-4 justify-center px-8" >
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :roles %>
+    <%= f.select :roles, options_for_select([[ "user", "user"], ["admin", "admin"]]) %>
+  </div>
+  <%= f.submit t("button.submit"), class:'px-4 py-2 rounded-md text-white bg-blue-500 block w-1/12' %>
+</div>
 <% end %>
+
+
